@@ -241,17 +241,17 @@ CREATE INDEX IF NOT EXISTS idx_day_capacity ON bookings(mentor_local_date, statu
 
 ## 11. Seeded Dataset
 
-### 10 Mentors (`Asia/Kolkata`, Working Hours: 10:00 to 20:00 IST)
-1. **Priya Sharma** (`mentor_01`): Lead Python & Scratch Mentor (Coding & Programming, Algorithms & Math)
-2. **Rohan Mehta** (`mentor_02`): Senior Full-Stack Web Coach (Web Development, Coding & Programming)
-3. **Ananya Iyer** (`mentor_03`): AI & Data Science Instructor (AI & Machine Learning, Coding & Programming)
-4. **Vikram Patel** (`mentor_04`): Robotics & Embedded Systems Specialist (Robotics & IoT, Algorithms & Math)
-5. **Sneha Roy** (`mentor_05`): Creative Game Designer & Logic Coach (Game Development, Coding & Programming)
-6. **Aditya Verma** (`mentor_06`): Interactive UI & Game Developer (Web Development, Game Development)
-7. **Pooja Nair** (`mentor_07`): Computational Math & AI Mentor (AI & Machine Learning, Algorithms & Math)
-8. **Rahul Deshmukh** (`mentor_08`): Hardware Logic & Robotics Educator (Robotics & IoT, Coding & Programming)
-9. **Tanvi Joshi** (`mentor_09`): Frontend & 2D Game Architect (Game Development, Web Development)
-10. **Karthik Sundaram** (`mentor_10`): Senior Algorithm & AI Coach (Coding & Programming, AI & Machine Learning)
+### 10 Mentors (`Asia/Kolkata`, Staggered Shifts)
+1. **Sneha Roy** (`mentor_01`): AI & Machine Learning Specialist (AI & ML, Coding) • 10:00 AM – 4:00 PM IST
+2. **Aarav Sharma** (`mentor_02`): Python & Game Development Coach (Coding, Game Dev) • 1:00 PM – 8:00 PM IST
+3. **Priya Nair** (`mentor_03`): Senior Web Development & UI Coach (Web Dev, Coding) • 11:00 AM – 6:00 PM IST
+4. **Rohan Kulkarni** (`mentor_04`): Robotics & Hardware Logic Specialist (Robotics, Algorithms) • 10:00 AM – 4:00 PM IST
+5. **Ananya Iyer** (`mentor_05`): Game Design & Scratch Specialist (Game Dev, Coding) • 2:00 PM – 8:00 PM IST
+6. **Vikram Patel** (`mentor_06`): Interactive Web & Mobile App Mentor (Web Dev, Game Dev) • 10:00 AM – 5:00 PM IST
+7. **Meera Krishnan** (`mentor_07`): Algorithms & Olympiad Math Coach (Algorithms, Coding) • 12:00 PM – 7:00 PM IST
+8. **Aditya Verma** (`mentor_08`): Python & Data Science Instructor (AI & ML, Algorithms) • 1:00 PM – 8:00 PM IST
+9. **Kavya Menon** (`mentor_09`): Creative Coding & Robotics Educator (Coding, Robotics) • 10:00 AM – 4:00 PM IST
+10. **Arjun Rao** (`mentor_10`): Senior Full-Stack & Algorithm Architect (Coding, Web Dev, Algorithms) • 3:00 PM – 8:00 PM IST
 
 ### 6 Learning Tracks
 - `coding_programming`: Coding & Programming
@@ -371,3 +371,51 @@ Test 4 verifies that after booking 4 classes across the 2 robotics mentors on `2
 - Real-time video in the dummy classroom is simulated (WebRTC is not integrated).
 - Email notifications are simulated in the console logs and displayed on the confirmation receipt rather than sent via an external SMTP service (e.g. SendGrid).
 - Mentor operating hours are configured as 10:00 AM – 8:00 PM IST across all 10 mentors.
+
+---
+
+## 22. How to Push to GitHub & Deploy with a Working Link
+
+### Step A: Push to GitHub
+
+1. Create a new repository on [GitHub](https://github.com/new) (e.g., `codeyoung-trial-booking`). Leave it empty (without README or .gitignore).
+2. In your terminal, run the following commands:
+```bash
+# Add your GitHub repository as remote origin (replace YOUR_USERNAME and YOUR_REPO)
+git remote add origin https://github.com/YOUR_USERNAME/codeyoung-trial-booking.git
+
+# Set default branch to main
+git branch -M main
+
+# Push code to GitHub
+git push -u origin main
+```
+
+---
+
+### Step B: Deploy with a Free Live Working Link (Recommended: Render)
+
+This application is architected so that the Express backend automatically serves the built React frontend in production from a single port.
+
+1. Go to [Render.com](https://render.com) and sign in with GitHub.
+2. Click **New +** → **Web Service**.
+3. Select your repository `codeyoung-trial-booking`.
+4. Configure the service:
+   - **Name**: `codeyoung-trial-booking` (or any unique name)
+   - **Environment**: `Node`
+   - **Region**: Any (e.g., Singapore or Oregon)
+   - **Branch**: `main`
+   - **Build Command**: `npm run build`
+   - **Start Command**: `npm start`
+   - **Plan**: Free
+5. Click **Create Web Service**.
+6. Render will automatically build the React client and launch the Express backend.
+7. Within 2 minutes, your live working link will be available (e.g., `https://codeyoung-trial-booking.onrender.com`).
+
+---
+
+### Alternative: Deploy on Railway
+1. Go to [Railway.app](https://railway.app) and click **New Project** → **Deploy from GitHub repo**.
+2. Select `codeyoung-trial-booking`.
+3. Under **Settings** → **Networking**, click **Generate Domain**.
+4. Railway will automatically detect the Node environment, run `npm run build`, and serve the app with your live public link.
