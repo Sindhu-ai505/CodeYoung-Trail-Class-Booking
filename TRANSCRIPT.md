@@ -3,7 +3,7 @@
 This document preserves the actual AI session transcript between the User and the AI Assistant (Antigravity), exported directly from the system logs.
 
 **Session ID**: 13e22442-08bb-4259-8c7c-248faf92d53e  
-**Last Updated**: 2026-09-26T13:50:05.411Z
+**Last Updated**: 2026-09-26T14:02:49.329Z
 
 ---
 
@@ -465,6 +465,90 @@ Other open documents:
 - c:\Users\Sindhu S Hegde\Desktop\project\CodeYoung-\server\package.json (LANGUAGE_JSON)
 - c:\Users\Sindhu S Hegde\Desktop\project\CodeYoung-\server\src\data\mentors.js (LANGUAGE_JAVASCRIPT)
 - c:\Users\Sindhu S Hegde\Desktop\project\CodeYoung-\server\src\services\availabilityService.js (LANGUAGE_JAVASCRIPT)
+</ADDITIONAL_METADATA>
+
+---
+
+### Assistant Response (Step 269)
+
+# Mentor Assignment & Availability System: Resolution Report
+
+The mentor assignment and availability system has been completely revised and verified. Sneha Roy is no longer repeatedly or statically assigned.
+
+---
+
+### 1. Why Sneha Roy was previously the only mentor
+Three root causes caused Sneha Roy to appear repeatedly:
+1. **Identical Static Working Hours**: All 10 mentors initially had the exact same uniform hours (`10:00 to 20:00 IST`). As a result, all mentors were eligible for every slot without time differentiation.
+2. **First-Element Array Pick on Tied Mentors**: When mentors had 0 bookings on a date, the candidate preview selection in [`availabilityService.js`](file:///c:/Users/Sindhu%20S%20Hegde/Desktop/project/CodeYoung-/server/src/services/availabilityService.js) sorted strictly by `dailyCount` (`0 - 0 = 0`). JavaScript's stable sort defaulted to `eligibleMentors[0]`. Because Sneha Roy was the first Game Development/AI mentor, every single slot across 10:00 AM, 11:00 AM, 1:00 PM, 3:00 PM, etc. displayed Sneha Roy.
+3. **Deterministic ID Tie-Breaker**: In [`bookingService.js`](file:///c:/Users/Sindhu%20S%20Hegde/Desktop/project/CodeYoung-/server/src/services/bookingService.js), when mentors were tied at 0 bookings, the tiebreaker was `a.mentor.id.localeCompare(b.mentor.id)`. This always selected the mentor with the lowest alphabetical ID repeatedly.
+
+---
+
+### 2. How many mentors now exist
+There are **10 unique, realistic mentors** seeded in [`mentors.js`](file:///c:/Users/Sindhu%20S%20Hegde/Desktop/project/CodeYoung-/server/src/data/mentors.js) with distinct specializations and staggered working hour shifts:
+
+| ID | Mentor Name | Role / Specialization | Supported Courses | Shift (IST) |
+|---|---|---|---|---|
+| `mentor_01` | **Sneha Roy** | AI & Machine Learning Specialist | AI & ML, Coding | 10:00 AM – 4:00 PM |
+| `mentor_02` | **Aarav Sharma** | Python & Game Development Coach | Coding, Game Dev | 1:00 PM – 8:00 PM |
+| `mentor_03` | **Priya Nair** | Senior Web Development & UI Coach | Web Dev, Codin
+<truncated 3899 bytes>
+signed.
+
+---
+
+### 8. How changing the course results in a different mentor
+Mentors are strictly mapped to their specializations:
+- **Robotics** $\rightarrow$ Rohan Kulkarni or Kavya Menon.
+- **Web Development** $\rightarrow$ Priya Nair, Vikram Patel, or Arjun Rao.
+- **Game Development** $\rightarrow$ Aarav Sharma, Ananya Iyer, or Vikram Patel.
+- **Algorithms & Math** $\rightarrow$ Meera Krishnan, Rohan Kulkarni, Aditya Verma, or Arjun Rao.
+- **AI & Machine Learning** $\rightarrow$ Sneha Roy (morning) or Aditya Verma (afternoon/evening).
+
+---
+
+### 9. How to reproduce this behavior manually in the UI
+1. Open the application at `http://localhost:5174/` (or refresh the page).
+2. Click **"Book Free Trial"** and enter parent/student details (Step 1).
+3. In **Step 2 (Choose Track)**:
+   - Select **Coding & Programming**:
+     - At 10:00 AM $\rightarrow$ Notice **Kavya Menon** or **Sneha Roy** is assigned.
+     - At 11:30 AM $\rightarrow$ Notice **Priya Nair** is assigned.
+     - At 12:00 PM $\rightarrow$ Notice **Meera Krishnan** is assigned.
+     - At 1:30 PM $\rightarrow$ Notice **Aarav Sharma** is assigned.
+     - At 2:30 PM $\rightarrow$ Notice **Ananya Iyer** is assigned.
+   - Go back and select **Web Development**:
+     - At 10:00 AM $\rightarrow$ **Vikram Patel** is assigned.
+     - At 11:30 AM $\rightarrow$ **Priya Nair** is assigned.
+     - Notice Sneha Roy is never shown for Web Development.
+4. **Testing Aarav Sharma's 2-class daily limit**:
+   - In the **Evaluator Lab** (bottom right toolbar), click **"Load Realistic Schedule"**.
+   - Aarav Sharma now has 2 bookings today (daily limit reached).
+   - Book Coding & Programming for 1:30 PM $\rightarrow$ Aarav Sharma is skipped, and Priya Nair / Ananya Iyer is assigned instead!
+
+---
+
+### 10. Confirmation
+Sneha Roy is **no longer hardcoded, defaulted, or monopolizing assignments**. The system dynamically filters and load-balances across all 10 mentors according to subject, time-of-day shifts, existing bookings, and daily limits. All 7 automated backend tests pass.
+
+---
+
+### User Prompt (Step 270)
+
+<USER_REQUEST>
+everything is fine just dont put we dont ask phone number and credit card at the bottom while entering the details. Also provide steps to push to git hub and deploy the project with working link
+</USER_REQUEST>
+<ADDITIONAL_METADATA>
+The current local time is: 2026-09-26T19:28:07+05:30.
+
+The user's current state is as follows:
+Active Document: c:\Users\Sindhu S Hegde\Desktop\project\CodeYoung-\TRANSCRIPT.md (LANGUAGE_MARKDOWN)
+Cursor is on line: 1
+Other open documents:
+- c:\Users\Sindhu S Hegde\Desktop\project\CodeYoung-\TRANSCRIPT.md (LANGUAGE_MARKDOWN)
+- c:\Users\Sindhu S Hegde\Desktop\project\CodeYoung-\client\src\components\BookingWizard\Step4DateTimezone.jsx (LANGUAGE_JAVASCRIPT)
+- c:\Users\Sindhu S Hegde\Desktop\project\CodeYoung-\server\package.json (LANGUAGE_JSON)
 </ADDITIONAL_METADATA>
 
 ---
