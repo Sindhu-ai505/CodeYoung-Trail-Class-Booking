@@ -106,7 +106,7 @@ export default function AdminDashboard({ onClose, onJoinClass }) {
             </div>
             <div>
               <h2 className="heading-sm" style={{ fontSize: '1.15rem' }}>
-                Admin & Evaluator Dashboard
+                Admin & Operations Dashboard
               </h2>
               <p className="text-xs" style={{ color: 'var(--color-muted-text)' }}>
                 Inspect real-time mentor schedules, daily 2-class limits, and persistent SQLite bookings

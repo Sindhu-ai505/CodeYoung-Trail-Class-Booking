@@ -20,6 +20,27 @@ export default function App() {
   const [isAdminOpen, setIsAdminOpen] = useState(false);
   const [activeVirtualClass, setActiveVirtualClass] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [isDevMode, setIsDevMode] = useState(false);
+
+  useEffect(() => {
+    // Only activate Dev / Evaluator controls if explicitly requested via ?dev=true or ?test=true
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('dev') === 'true' || params.get('test') === 'true') {
+      setIsDevMode(true);
+    }
+    if (params.get('admin') === 'true') {
+      setIsAdminOpen(true);
+    }
+
+    // Optional developer shortcut: Ctrl+Shift+D toggles dev controls
+    const handleKeyDown = (e) => {
+      if (e.ctrlKey && e.shiftKey && e.key === 'D') {
+        setIsDevMode(prev => !prev);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
 
   const loadInitialData = async () => {
     try {
@@ -130,11 +151,13 @@ export default function App() {
         />
       )}
 
-      {/* Floating Evaluator Test Presets */}
-      <DevToolbar
-        stats={devStats}
-        onRefreshNeeded={handleRefreshStats}
-      />
+      {/* Development & Evaluator Controls (Hidden from production parent UI, accessible via ?dev=true or Ctrl+Shift+D) */}
+      {isDevMode && (
+        <DevToolbar
+          stats={devStats}
+          onRefreshNeeded={handleRefreshStats}
+        />
+      )}
     </div>
   );
 }

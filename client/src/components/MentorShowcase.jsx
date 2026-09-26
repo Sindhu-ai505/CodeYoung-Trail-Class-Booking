@@ -92,7 +92,7 @@ export default function MentorShowcase({ mentors, subjects }) {
                     <div style={{ textAlign: 'right' }}>
                       {isFull ? (
                         <span className="badge badge-error" style={{ fontSize: '0.72rem' }}>
-                          <AlertCircle size={12} /> Daily Limit (2/2)
+                          <AlertCircle size={12} /> Fully Booked Today
                         </span>
                       ) : (
                         <span className="badge badge-success" style={{ fontSize: '0.72rem' }}>

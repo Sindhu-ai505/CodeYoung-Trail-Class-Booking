@@ -68,27 +68,17 @@ export default function Footer({ onOpenAdmin }) {
             </ul>
           </div>
 
-          {/* Evaluation & Simulation Notes */}
+          {/* Why Codeyoung */}
           <div>
             <h4 className="heading-sm" style={{ fontSize: '0.95rem', marginBottom: '0.85rem' }}>
-              Evaluator Notes
+              Why Codeyoung
             </h4>
-            <p className="text-body" style={{ fontSize: '0.82rem', lineHeight: 1.6, marginBottom: '0.75rem' }}>
-              • Email delivery & live class links are simulated for assessment.<br />
-              • IANA timezone conversion automatically compensates for Daylight Saving Time (DST).<br />
-              • All bookings are persisted in SQLite (appointments.db).
-            </p>
-            <button
-              onClick={onOpenAdmin}
-              style={{
-                fontSize: '0.8rem',
-                fontWeight: 700,
-                color: 'var(--color-primary)',
-                textDecoration: 'underline'
-              }}
-            >
-              Open Evaluator Database Table →
-            </button>
+            <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.6rem', fontSize: '0.82rem', color: 'var(--color-muted-text)' }}>
+              <li>• Personalized 1:1 live instruction</li>
+              <li>• Interactive hands-on project creation</li>
+              <li>• Comprehensive student skill assessment</li>
+              <li>• Seamless international timezone scheduling</li>
+            </ul>
           </div>
         </div>
 
@@ -105,10 +95,10 @@ export default function Footer({ onOpenAdmin }) {
           color: 'var(--color-light-text)'
         }}>
           <div>
-            © {new Date().getFullYear()} Codeyoung Trial Booking Demo • Light-Mode First Architecture
+            © {new Date().getFullYear()} Codeyoung. All rights reserved.
           </div>
           <div>
-            Zero phone number collection • Built with Node.js & React
+            1:1 Live Trial Class Appointment Booking
           </div>
         </div>
       </div>

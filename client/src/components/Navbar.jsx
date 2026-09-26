@@ -1,5 +1,5 @@
 import React from 'react';
-import { Calendar, ShieldCheck, Wrench, Sparkles } from 'lucide-react';
+import { Calendar, Sparkles } from 'lucide-react';
 
 export default function Navbar({ onOpenBooking, onOpenAdmin, onOpenDevLab, devStats }) {
   return (
@@ -52,72 +52,24 @@ export default function Navbar({ onOpenBooking, onOpenAdmin, onOpenDevLab, devSt
         </div>
 
         {/* Navigation Links */}
-        <nav style={{ display: 'flex', alignItems: 'center', gap: '1.75rem' }} className="desktop-nav">
-          <a href="#how-it-works" style={{ fontSize: '0.9rem', fontWeight: 600, color: 'var(--color-muted-text)' }}>
+        <nav style={{ display: 'flex', alignItems: 'center', gap: '2rem' }} className="desktop-nav">
+          <a href="#how-it-works" style={{ fontSize: '0.92rem', fontWeight: 600, color: 'var(--color-muted-text)' }}>
             How It Works
           </a>
-          <a href="#courses" style={{ fontSize: '0.9rem', fontWeight: 600, color: 'var(--color-muted-text)' }}>
+          <a href="#courses" style={{ fontSize: '0.92rem', fontWeight: 600, color: 'var(--color-muted-text)' }}>
             Courses
           </a>
-          <a href="#mentors" style={{ fontSize: '0.9rem', fontWeight: 600, color: 'var(--color-muted-text)' }}>
-            Our 10 Mentors
+          <a href="#mentors" style={{ fontSize: '0.92rem', fontWeight: 600, color: 'var(--color-muted-text)' }}>
+            Our Mentors
           </a>
-          <button
-            onClick={onOpenAdmin}
-            style={{
-              fontSize: '0.85rem',
-              fontWeight: 600,
-              color: 'var(--color-dark-teal)',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '0.35rem',
-              padding: '0.4rem 0.75rem',
-              borderRadius: 'var(--radius-md)',
-              backgroundColor: 'var(--color-primary-light)'
-            }}
-            title="View mentor schedules and live booking database"
-          >
-            <ShieldCheck size={16} />
-            Admin & Database
-          </button>
         </nav>
 
         {/* Action Controls */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
           <button
-            onClick={onOpenDevLab}
-            className="btn btn-secondary"
-            style={{
-              padding: '0.5rem 0.85rem',
-              fontSize: '0.82rem',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '0.4rem',
-              borderColor: 'var(--color-warm-yellow)',
-              backgroundColor: 'var(--color-soft-yellow)'
-            }}
-            title="Evaluator test presets for daily limit and error simulation"
-          >
-            <Wrench size={15} color="#B5580C" />
-            <span style={{ fontWeight: 700, color: '#8C6200' }}>Evaluator Lab</span>
-            {devStats && (
-              <span style={{
-                backgroundColor: '#FFFFFF',
-                padding: '0.1rem 0.4rem',
-                borderRadius: '10px',
-                fontSize: '0.72rem',
-                fontWeight: 700,
-                color: 'var(--color-dark-text)'
-              }}>
-                {devStats.todayBookingsCount}/20
-              </span>
-            )}
-          </button>
-
-          <button
             onClick={onOpenBooking}
             className="btn btn-primary"
-            style={{ padding: '0.6rem 1.25rem' }}
+            style={{ padding: '0.65rem 1.4rem' }}
           >
             <Sparkles size={16} />
             <span>Book Free Trial</span>
