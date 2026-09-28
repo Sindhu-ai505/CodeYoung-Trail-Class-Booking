@@ -12,12 +12,18 @@ yarn-error.log*
 # Build artifacts
 dist/
 build/
+frontend/dist/
 
 # Local databases & uploads
 server/data/appointments.db
 server/data/*.db-wal
 server/data/*.db-shm
+backend/data/*.db
+backend/data/*.db-wal
+backend/data/*.db-shm
 *.db
+*.db-wal
+*.db-shm
 
 # Environment variables
 .env
