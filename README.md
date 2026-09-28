@@ -10,23 +10,21 @@ A production-grade, full-stack ed-tech web application for booking 1:1 live tria
 3. [Tech Stack](#3-tech-stack)
 4. [Architecture](#4-architecture)
 5. [Folder Structure](#5-folder-structure)
-6. [Installation](#6-installation)
+6. [How to Run the Project](#6-how-to-run-the-project)
 7. [Environment Setup](#7-environment-setup)
-8. [How to Run Frontend](#8-how-to-run-frontend)
-9. [How to Run Backend](#9-how-to-run-backend)
-10. [Database Setup & Schema](#10-database-setup--schema)
-11. [Seeded Dataset](#11-seeded-dataset)
-12. [Mentor Assignment Logic](#12-mentor-assignment-logic)
-13. [Timezone & DST Handling](#13-timezone--dst-handling)
-14. [Idempotency Key Architecture](#14-idempotency-key-architecture)
-15. [Parent Account Persistence & Returning-User Auth](#15-parent-account-persistence--returning-user-auth)
-16. [Concurrency Smoke Test & Demonstration](#16-concurrency-smoke-test--demonstration)
-17. [Automated Vitest Test Suite](#17-automated-vitest-test-suite)
-18. [Daily Mentor & System Limits](#18-daily-mentor--system-limits)
-19. [Error Handling & User States](#19-error-handling--user-states)
-20. [API Documentation](#20-api-documentation)
-21. [Design Decisions](#21-design-decisions)
-22. [How to Push to GitHub & Deploy](#22-how-to-push-to-github--deploy)
+8. [Database Setup & Schema](#10-database-setup--schema)
+9. [Seeded Dataset](#11-seeded-dataset)
+10. [Mentor Assignment Logic](#12-mentor-assignment-logic)
+11. [Timezone & DST Handling](#13-timezone--dst-handling)
+12. [Idempotency Key Architecture](#14-idempotency-key-architecture)
+13. [Parent Account Persistence & Returning-User Auth](#15-parent-account-persistence--returning-user-auth)
+14. [Concurrency Smoke Test & Demonstration](#16-concurrency-smoke-test--demonstration)
+15. [Automated Vitest Test Suite](#17-automated-vitest-test-suite)
+16. [Daily Mentor & System Limits](#18-daily-mentor--system-limits)
+17. [Error Handling & User States](#19-error-handling--user-states)
+18. [API Documentation](#20-api-documentation)
+19. [Design Decisions](#21-design-decisions)
+20. [How to Push to GitHub & Deploy](#22-how-to-push-to-github--deploy)
 
 ---
 
@@ -188,60 +186,75 @@ CodeYoung-/
 └── README.md
 ```
 
----
+## How to Run the Project
 
-## 6. Installation
-
-Clone the repository and install dependencies:
+### 1. Clone the repository
 
 ```bash
-# Clone repository
-git clone https://github.com/YOUR_USERNAME/codeyoung-trial-booking.git
-cd codeyoung-trial-booking
+git clone <YOUR_GITHUB_REPOSITORY_URL>
+cd CodeYoung-
+```
+*(Or clone your GitHub repository directly: `git clone https://github.com/Sindhu-ai505/CodeYoung-Trail-Class-Booking.git`)*
 
-# Install backend dependencies
+### 2. Start the Backend
+
+Open **Terminal 1**:
+
+```bash
 cd backend
 npm install
-
-# Install frontend dependencies
-cd ../frontend
-npm install
+npm run dev
 ```
+
+Backend runs on:
+`http://localhost:5000`
+
+### 3. Start the Frontend
+
+Open **Terminal 2**:
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+Frontend runs on:
+`http://localhost:5173`
+
+### Important
+
+Run the backend only once.
+
+If you see:
+
+```text
+Error: listen EADDRINUSE: address already in use :::5000
+```
+
+it means port 5000 is already being used by another process on the computer.
+
+Check which process is using port 5000:
+
+**Windows:**
+```powershell
+netstat -ano | findstr :5000
+```
+
+Then stop that process if it is an old backend instance, and start the backend again:
+```powershell
+taskkill /PID <PID> /F
+```
+*(Replace `<PID>` with the actual process ID number shown in the rightmost column of the `netstat` command).*
 
 ---
 
-## 7. Environment Setup
+## Environment Setup
 The backend defaults to port `5000` and creates `backend/data/appointments.db` automatically. Optionally, create `backend/.env`:
 
 ```env
 PORT=5000
 DB_PATH=./data/appointments.db
-```
-
----
-
-## 8. How to Run Frontend
-From the `frontend` directory:
-```bash
-cd frontend
-npm run dev
-```
-Open `http://localhost:5173` (or port displayed by Vite).
-
----
-
-## 9. How to Run Backend
-From the `backend` directory:
-```bash
-cd backend
-npm start
-```
-The API starts at `http://localhost:5000`.
-
-### Running Both Concurrently
-From the project root:
-```bash
-npm run dev
 ```
 
 ---
